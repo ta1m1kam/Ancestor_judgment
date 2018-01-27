@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Race</title>
+</head>
+<body>
+  {% if predict %}
+  <img src="{{filepath}}" border="1"> predict:{{predict}} <br>
+  <hr>
+  ファイルを撰択してください<br>
+  <form action="./" method = "POST" enctype = "multipart/form-data">
+    <input type="file" name="file"/>
+    <input type="submit">
+  </form>
+</body>
+</html>
