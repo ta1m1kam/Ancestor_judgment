@@ -1,3 +1,11 @@
+import numpy as np
+import cv2
+from keras.models import model_from_json, load_model
+
+# モデルを利用して判定する
+model = model_from_json(open('../results/race_model.json').read())
+model.load_weights('../results/my_model.h5')
+
 def detect_face(image):
     print(image.shape)
     #opencvを使って顔抽出
@@ -17,8 +25,28 @@ def detect_face(image):
             img = cv2.resize(image,(64,64))
             img=np.expand_dims(img,axis=0)
             name = detect_who(img)
-            cv2.putText(image,name,(x,y+height+20),cv2.FONT_HERSHEY_DUPLEX,1,(255,0,0),2)
+            # cv2.putText(image,name,(x,y+height+20),cv2.FONT_HERSHEY_DUPLEX,1,(255,0,0),2)
+
     #顔が検出されなかった時
     else:
-        print("no face")
-    return image
+        name = "no face"
+
+    return name
+
+def detect_who(img):
+    #予測
+    name=""
+    # print(model.predict(img))
+    nameNumLabel=np.argmax(model.predict(img))
+    if nameNumLabel== 0:
+        name="Asian"
+    elif nameNumLabel==1:
+        name="Caucasian"
+    elif nameNumLabel==2:
+        name="Hispanic"
+    elif nameNumLabel==3:
+        name="Multiracial"
+    elif nameNumLabel==4:
+        name="Black"
+    print(name)
+    return name
