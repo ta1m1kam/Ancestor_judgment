@@ -28,3 +28,9 @@ def upload_file():
         # この部分でdetect_face.pyのdetect_faceメソッドを呼び出す！
         # それでできる気がする ↓↓↓↓↓↓↓resizeいらねーかも
         face_image = np.array(Image.open(filepath).resize)
+
+
+
+
+if __name__ = '__main__':
+    app.run(host="0.0.0.0", port=int("5000"), debug=True)
