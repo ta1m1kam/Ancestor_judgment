@@ -8,3 +8,6 @@ test_image/
 face_images/
 
 .DS_Store
+
+Ancestor_judgment/app/test/
+Ancestor_judgment/app/static/
