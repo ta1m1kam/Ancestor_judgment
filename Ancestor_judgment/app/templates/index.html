@@ -3,16 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Predict Race</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
-  {% if predict %}
-  <img src="{{filepath}}" border="1"> predict:{{predict}} <br>
-  <hr>
-  {% endif %}
-  ファイルを撰択してください<br>
-  <form action="./" method = "POST" enctype = "multipart/form-data">
-    <input type="file" name="file"/>
-    <input type="submit">
-  </form>
+  <div class="jumbotron">
+    <h1 class="display-3">Ancestor Judgment</h1>
+    <p class="lead">This is an application to predict your ancestors. <br>
+      In this application, models learned by deep learning are created based on the database called Face Place.</p>
+    <hr class="my-4">
+    <p>Usage is simple. You just upload your own image.</p>
+    <p class="lead">
+    {% if predict %}
+    <img src="{{filepath}}" border="1"> predict:{{predict}} <br>
+    <hr>
+    {% endif %}
+    ファイルを選択してください<br>
+    <p class="lead">
+      <form action="./" method = "POST" enctype = "multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" class="btn btn-primary" />
+      </form>
+    </p>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
